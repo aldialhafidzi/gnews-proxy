@@ -1,0 +1,18 @@
+export default async function handler(req, res) {
+  const q = req.query.q || "example";
+  const API_KEY = process.env.GNEWS_API_KEY;
+
+  try {
+    const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(
+      q,
+    )}&apikey=${API_KEY}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.status(response.status).json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+}
