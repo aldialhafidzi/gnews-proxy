@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   try {
     const url = `https://gnews.io/api/v4/search?q=${encodeURIComponent(
       q,
-    )}&max=${max}&apikey=${API_KEY}`;
+    )}&max=${max}&lang=en&apikey=${API_KEY}`;
 
     const response = await fetch(url);
     const data = await response.json();

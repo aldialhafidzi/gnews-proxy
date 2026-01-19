@@ -3,7 +3,7 @@ export default async function handler(req, res) {
   const API_KEY = process.env.GNEWS_API_KEY;
 
   try {
-    const url = `https://gnews.io/api/v4/top-headlines?category=${category}&apikey=${API_KEY}`;
+    const url = `https://gnews.io/api/v4/top-headlines?category=${category}&lang=en&apikey=${API_KEY}`;
 
     const response = await fetch(url);
     const data = await response.json();
